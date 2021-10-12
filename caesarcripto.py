@@ -2,8 +2,8 @@ def senha(senha_o):
     chave = 0
     for k in senha_o:
         chave += ord(k) % 10
-        return chave
-    # test
+    return chave
+
 
 def criptografar(frase, senha_o):
     x = 0
