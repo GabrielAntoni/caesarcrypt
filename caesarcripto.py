@@ -20,7 +20,7 @@ def senha(senha_o):
     return chave
 
 
-def criptografar(frase, senha_o):
+def criptografar(frase, senha_o, tipo):
     x = 0
     nova_frase = ''
     for c in frase:
@@ -31,25 +31,14 @@ def criptografar(frase, senha_o):
             nova_frase += c
         else:
             chave = senha(senha_o)
-            new_index = index + chave
+            if tipo == '1':
+                new_index = index + chave
+            elif tipo == '2':
+                new_index = index - chave
+            else:
+                print('comando invalido!')
+                break
             new_index = new_index % len(letras[x])
-            nova_frase += letras[x][new_index:new_index+1]
+            nova_frase += letras[x][new_index:new_index + 1]
             x += 1
     return nova_frase
-def descriptografar(frase, senha_o):
-    x = 0
-    nova_frase = ''
-    for c in frase:
-        if x >= len(letras):
-            x = 0
-        index = letras[x].find(c)
-        if index == -1:
-            nova_frase += c
-        else:
-            chave = senha(senha_o)
-            new_index = index - chave
-            new_index = new_index % len(letras[x])
-            nova_frase += letras[x][new_index:new_index+1]
-            x += 1
-    return nova_frase
-
